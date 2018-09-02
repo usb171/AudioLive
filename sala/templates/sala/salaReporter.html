@@ -1,0 +1,254 @@
+{% extends 'baseReporter.html' %}
+{% load static %}
+{% block body %}
+
+<main>
+  <div class="section">
+    <div class="row ">
+      <div class="col s12 m12 l12">
+        <div class="card z-depth-2">
+          <div class="card-content black-text">
+            {% if request.session.context.salas|length > 1 %}
+              <div id="div_select_id" class="input-field col s12 m12 l12 center-align">
+                <select id="select_salas_id">
+                  {% for sala in request.session.context.salas%}
+                  <option value={{sala}}>{{sala}}</option>
+                  {% endfor%}
+                </select>
+                <label>Sala</label>
+              </div>
+            {% endif %}
+            <h6 class="center-align red-text text-darken-2 modal-trigger"  href="#modal1" id="status-cliente">OffLine</h6></br>
+            <div class="row" id="list-host" hidden>
+              <div class="col s12 m12 l12" id="audios-container">
+                <ul class="collapsible expandable" id=audios-container-ul></ul>
+              </div>
+            </div>
+          </div>
+          <div class="center card-action">
+            <a class="btn-floating btn-large waves-effect waves-light red darken-1 z-depth-2" id="join-room"><i class="material-icons" id="icon-cloud">cloud_off</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h6 class="center-align">Informações da sessão</h6>
+      <p>Nome: {{ user.first_name }}</p>
+      <p>Sobrenome: {{ user.last_name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Cliente: TV Cidade Verde</p>
+    </div>
+    <div class="modal-footer center">
+      <a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Sobre</a>
+      <a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Ajuda</a>
+    </div>
+  </div>
+
+</main>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--{% load static %}-->
+<!--<html>-->
+  <!--<head>-->
+    <!--<title>TV Cidade Verde</title>-->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>-->
+    <!--<link rel="stylesheet" href="{% static 'css/getHTMLMediaElement.css' %}">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+  <!--</head>-->
+
+  <!--<body>-->
+    <!--<header>-->
+      <!--<nav>-->
+        <!--<div class="nav-wrapper green darken-2 z-depth-3">-->
+          <!--<a href="#!" class="center brand-logo ">-->
+            <!--<div class="center-align" id="titulo">Audio Live</div>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</nav>-->
+    <!--</header>-->
+
+    <!--<div class="section">-->
+      <!--<div class="row ">-->
+
+        <!--<div class="col s12 m12 l12">-->
+          <!--<div class="card z-depth-2">-->
+            <!--<div class="card-content black-text">-->
+
+              <!--{% if request.session.context.salas|length > 1 %}-->
+                <!--<div id="div_select_id" class="input-field col s12 m12 l12 center-align">-->
+                  <!--<select id="select_salas_id">-->
+                    <!--{% for sala in request.session.context.salas%}-->
+                    <!--<option value={{sala}}>{{sala}}</option>-->
+                    <!--{% endfor%}-->
+                  <!--</select>-->
+                  <!--<label>Sala</label>-->
+                <!--</div>-->
+              <!--{% endif %}-->
+
+              <!--<h6 class="center-align red-text text-darken-2 modal-trigger"  href="#modal1" id="status-cliente">OffLine</h6></br>-->
+              <!--<div class="row" id="list-host" hidden>-->
+                <!--<div class="col s12 m12 l12" id="audios-container">-->
+                  <!--<ul class="collapsible expandable" id=audios-container-ul></ul>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="center card-action">-->
+              <!--<a class="btn-floating btn-large waves-effect waves-light red darken-1 z-depth-2" id="join-room"><i class="material-icons" id="icon-cloud">cloud_off</i></a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div id="modal1" class="modal">-->
+      <!--<div class="modal-content">-->
+        <!--<h6 class="center-align">Informações da sessão</h6>-->
+        <!--<p>Nome: {{ user.first_name }}</p>-->
+        <!--<p>Sobrenome: {{ user.last_name }}</p>-->
+        <!--<p>Email: {{ user.email }}</p>-->
+        <!--<p>Cliente: TV Cidade Verde</p>-->
+      <!--</div>-->
+      <!--<div class="modal-footer center">-->
+        <!--<a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Sobre</a>-->
+        <!--<a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Ajuda</a>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<script src="{% static 'js/RTCMultiConnection.js' %}"></script>-->
+    <!--<script src="{% static 'js/adapter.js' %}"></script>-->
+    <!--<script src="{% static 'js/socket.io.js' %}"></script>-->
+    <!--<script src="{% static 'js/getHTMLMediaElement.js' %}"></script>-->
+    <!--<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>-->
+    <!--<script src="{% static 'js/materialize.min.js' %}"></script>-->
+    <!--<script src="{% static 'js/custom.js' %}"></script>-->
+
+    <!--<script>-->
+
+     <!--var clik = false-->
+
+      <!--document.getElementById('join-room').onclick = function() {-->
+         <!--if(!clik){-->
+            <!--{% if request.session.context.salas|length > 1 %}-->
+              <!--connection.join($("#select_salas_id").val());-->
+            <!--{% endif %}-->
+           <!--$("#list-host").show();-->
+           <!--$("#div_select_id").hide();-->
+           <!--clik = !clik;-->
+         <!--}else{-->
+           <!--location.reload();-->
+         <!--}-->
+      <!--};-->
+
+        <!--var connection = new RTCMultiConnection();-->
+        <!--connection.socketURL = 'https://sputnikcv.ddns.net/';-->
+        <!--connection.socketMessageEvent = 'audio-conference-demo';-->
+
+
+        <!--connection.session = {-->
+            <!--audio: true,-->
+            <!--video: false-->
+        <!--};-->
+
+        <!--connection.mediaConstraints = {-->
+            <!--audio: true,-->
+            <!--video: false,-->
+        <!--};-->
+
+        <!--connection.sdpConstraints.mandatory = {-->
+            <!--OfferToReceiveAudio: true,-->
+            <!--OfferToReceiveVideo: false,-->
+        <!--};-->
+
+        <!--var countConnect = 0;-->
+        <!--connection.audiosContainer = document.getElementById('audios-container');-->
+        <!--connection.onstream = function(event) {-->
+            <!--var width = parseInt(connection.audiosContainer.clientWidth / 2) - 20;-->
+            <!--var mediaElement = getHTMLMediaElement(event.mediaElement, {-->
+                <!--title: event.userid,-->
+                <!--buttons: ['full-screen'],-->
+                <!--width: width,-->
+                <!--showOnMouseEnter: false-->
+            <!--});-->
+
+            <!--connection.audiosContainer.appendChild(mediaElement);-->
+            <!--countConnect += 1;-->
+            <!--if(countConnect > 1){-->
+              <!--$("#icon-cloud").html("cloud_queue");-->
+              <!--$("#join-room").removeClass("red");-->
+              <!--$("#join-room").addClass("green pulse");-->
+
+              <!--$("#status-cliente").html("OnLine");-->
+              <!--$("#status-cliente").removeClass("red-text text-darken-2");-->
+              <!--$("#status-cliente").addClass("green-text text-darken-2");-->
+            <!--}-->
+
+            <!--setTimeout(function() {-->
+                <!--mediaElement.media.play();-->
+            <!--}, 5000);-->
+
+            <!--mediaElement.id = event.streamid;-->
+        <!--};-->
+
+        <!--connection.onstreamended = function(event) {-->
+            <!--var mediaElement = document.getElementById(event.streamid);-->
+            <!--if (mediaElement) {-->
+                <!--mediaElement.parentNode.removeChild(mediaElement);-->
+                <!--countConnect -= 1;-->
+                <!--if(countConnect < 2){-->
+                  <!--location.reload();-->
+
+                 <!--$("#status-cliente").html("OffLine");-->
+                 <!--$("#status-cliente").removeClass("green-text text-darken-2");-->
+                 <!--$("#status-cliente").addClass("red-text text-darken-2");-->
+               <!--}-->
+            <!--}-->
+        <!--};-->
+
+        <!--{% if request.session.context.salas|length == 1 %}-->
+          <!--connection.join("{{request.session.context.salas.0}}");-->
+          <!--$("#list-host").show();-->
+          <!--clik = !clik;-->
+        <!--{% endif %}-->
+
+
+    <!--</script>-->
+
+  <!--</body>-->
+<!--</html>-->

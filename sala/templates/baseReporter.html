@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TV Cidade Verde</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>
+  <link rel="stylesheet" href="{% static 'css/getHTMLMediaElement.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div id="div_nav_id" class="nav-wrapper red darken-2 z-depth-3">
+        <a class="center brand-logo"> <div class="center-align"></div>Reporter</a>
+      </div>
+    </nav>
+  </header>
+
+  {% block body %}
+  {% endblock %}
+
+  <script src="{% static 'js/RTCMultiConnection.js' %}"></script>
+  <script src="{% static 'js/adapter.js' %}"></script>
+  <script src="{% static 'js/socket.io.js' %}"></script>
+  <script src="{% static 'js/getHTMLMediaElement.js' %}"></script>
+  <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+  <script src="{% static 'js/materialize.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script>
+   var salas = {{request.session.context.salas|safe}};
+   var nome = "{{user.first_name}}";
+   var sobrenome = "{{user.last_name}}";
+  </script>
+  <script src="{% static 'js/sala/audioOneToMany.js' %}"></script>
+
+
+</body>
+</html>

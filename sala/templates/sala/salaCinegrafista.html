@@ -1,0 +1,52 @@
+{% extends 'baseCinegrafista.html' %}
+{% load static %}
+{% block body %}
+
+<main>
+
+  <div class="section">
+    <div class="row ">
+      <div class="col s12 m12 l12">
+        <div class="card z-depth-2">
+          <div class="card-content black-text">
+            {% if request.session.context.salas|length > 1 %}
+              <div id="div_select_id" class="input-field col s12 m12 l12 center-align">
+                <select id="select_salas_id">
+                  {% for sala in request.session.context.salas%}
+                  <option value={{sala}}>{{sala}}</option>
+                  {% endfor%}
+                </select>
+                <label>Sala</label>
+              </div>
+            {% endif %}
+            <h6 class="center-align red-text text-darken-2 modal-trigger"  href="#modal1" id="status-cliente">OffLine</h6></br>
+            <div class="row" id="list-host" hidden>
+              <div class="col s12 m12 l12" id="audios-container">
+                <ul class="collapsible expandable" id=audios-container-ul></ul>
+              </div>
+            </div>
+          </div>
+          <div class="center card-action">
+            <a class="btn-floating btn-large waves-effect waves-light red darken-1 z-depth-2" id="join-room"><i class="material-icons" id="icon-cloud">cloud_off</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h6 class="center-align">Informações da sessão</h6>
+      <p>Nome: {{ user.first_name }}</p>
+      <p>Sobrenome: {{ user.last_name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Cliente: TV Cidade Verde</p>
+    </div>
+    <div class="modal-footer center">
+      <a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Sobre</a>
+      <a href="#!" class="center modal-close waves-effect waves-green btn green darken-1 z-depth-2 ">Ajuda</a>
+    </div>
+  </div>
+
+</main>
+{% endblock %}

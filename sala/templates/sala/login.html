@@ -1,0 +1,31 @@
+{% extends 'baseLogin.html' %}
+{% load static %}
+{% block body %}
+
+<main>
+  <div class="row center section">
+    <div class="col s12 m10 offset-m1 l6 offset-l3">
+      <div class="card sticky-action z-depth-2 card-panel hoverable" style=" margin : 0px; padding : 2px">
+        <div class="col s12 center-align" style="margin-top: 5%">
+          <img src="{% static 'img/logo.ico' %}" alt="App Logo" class="responsive-img" style="width:100px ; height :100px;"/>
+        </div>
+        <form class="card-content row center-align" method="POST" acticon="{% url 'login' %}" id="id_div_login">
+           {% csrf_token %}
+          <div class="input-field col s12">
+            <i class="material-icons prefix center">account_circle</i>
+            <input id="username" type='text'name='username' class="validate left-align" required="true" placeholder="nadia" value="{{username}}"/>
+            <label for="email" class="left-align">Usuário</label>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix center">dialpad</i>
+            <input type='password' name='password' id='password' class="validate" required="true" placeholder="senha de acesso" value="{{password}}"/>
+            <label for="password" class=" left-align">Senha</label>
+          </div>
+          <button class="waves-effect waves-light green darken-2 btn" type="submit">Entrar</button>
+        </form>
+        <h6 class="red-text text-darken-2 center-align">{{ msg }}</h6>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
